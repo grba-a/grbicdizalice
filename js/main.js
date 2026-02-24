@@ -2,78 +2,6 @@
   const htmlEl = document.documentElement;
 
   // =========================
-  // THEME (dark / light only) + HOTKEY
-  // =========================
-  const THEME_KEY = "theme";
-
-  const getSavedTheme = () => {
-    const v = localStorage.getItem(THEME_KEY);
-    return v === "light" ? "light" : "dark";
-  };
-
-  const applyTheme = (mode) => {
-    if (mode === "light") {
-      htmlEl.setAttribute("data-theme", "light");
-    } else {
-      htmlEl.removeAttribute("data-theme");
-    }
-
-    const btn = document.getElementById("themeToggle");
-    if (btn) {
-      const isDark = mode === "dark";
-      btn.setAttribute("aria-pressed", String(isDark));
-      btn.innerHTML = isDark ? "🌙" : "☀️";
-      btn.title = "Promijeni temu (T)";
-    }
-  };
-
-  const setTheme = (mode) => {
-    localStorage.setItem(THEME_KEY, mode);
-    applyTheme(mode);
-  };
-
-  const toggleTheme = () => {
-    const current = getSavedTheme();
-    setTheme(current === "dark" ? "light" : "dark");
-  };
-
-  // init
-  applyTheme(getSavedTheme());
-
-  // click
-  const themeToggle = document.getElementById("themeToggle");
-  if (themeToggle) {
-    themeToggle.addEventListener("click", toggleTheme);
-  }
-
-  // hotkeys: T toggle, D dark, L light
-  window.addEventListener("keydown", (e) => {
-    const tag = e.target?.tagName?.toLowerCase();
-    const isTyping =
-      tag === "input" ||
-      tag === "textarea" ||
-      tag === "select" ||
-      e.target?.isContentEditable;
-
-    if (isTyping || e.ctrlKey || e.metaKey || e.altKey) return;
-
-    const k = e.key.toLowerCase();
-
-    if (k === "t") {
-      e.preventDefault();
-      toggleTheme();
-    }
-    if (k === "d") {
-      e.preventDefault();
-      setTheme("dark");
-    }
-    if (k === "l") {
-      e.preventDefault();
-      setTheme("light");
-    }
-  });
-
-  // =========================
   // Footer year
   // =========================
   const yearEl = document.getElementById("year");
@@ -209,40 +137,53 @@
   }
 })();
 
-  // =========================
+    // =========================
   // SOCIAL PROOF COUNT UP
   // =========================
-
-  const counters = document.querySelectorAll(".social__number");
+  const counters = document.querySelectorAll(".social__number[data-target]");
 
   const animateCounter = (el) => {
-    const target = parseInt(el.dataset.target, 10);
-    if (!target) return;
+    const target = Number(el.getAttribute("data-target"));
+    if (!Number.isFinite(target) || target <= 0) return;
 
-    const suffix = el.textContent.replace(/[0-9]/g, ""); // + ili h
+    const suffix = el.getAttribute("data-suffix") || "";
     let current = 0;
 
-    const duration = 1200;
-    const stepTime = Math.max(10, duration / target);
+    const duration = 3200; // ms
+    const start = performance.now();
 
-    const timer = setInterval(() => {
-      current += Math.ceil(target / 60);
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      el.textContent = current + suffix;
-    }, stepTime);
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      // easeOutCubic
+     const eased = t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      current = Math.round(target * eased);
+
+      el.textContent = `${current}${suffix}`;
+
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = `${target}${suffix}`;
+    };
+
+    requestAnimationFrame(tick);
   };
 
-  // trigger when visible
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.6 });
+  // trigger when visible (once)
+  if ("IntersectionObserver" in window && counters.length) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.45 }
+    );
 
-  counters.forEach((c) => observer.observe(c));
+    counters.forEach((c) => observer.observe(c));
+  } else {
+    // fallback
+    counters.forEach(animateCounter);
+  }
