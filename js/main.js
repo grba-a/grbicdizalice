@@ -208,3 +208,41 @@
     });
   }
 })();
+
+  // =========================
+  // SOCIAL PROOF COUNT UP
+  // =========================
+
+  const counters = document.querySelectorAll(".social__number");
+
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.target, 10);
+    if (!target) return;
+
+    const suffix = el.textContent.replace(/[0-9]/g, ""); // + ili h
+    let current = 0;
+
+    const duration = 1200;
+    const stepTime = Math.max(10, duration / target);
+
+    const timer = setInterval(() => {
+      current += Math.ceil(target / 60);
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = current + suffix;
+    }, stepTime);
+  };
+
+  // trigger when visible
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  counters.forEach((c) => observer.observe(c));
