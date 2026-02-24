@@ -802,18 +802,129 @@ html[data-theme="light"] textarea{
 input:focus, textarea:focus{ border-color: rgba(199,154,18,.45); }
 textarea{ resize: vertical; min-height: 130px; }
 
-/* ========== FOOTER ========== */
-.footer{ padding: 18px 0; color: rgba(255,255,255,.70); }
-html[data-theme="light"] .footer{ color: rgba(10,14,20,.62); }
+/* =========================
+   FOOTER (LEFT INFO + RIGHT NAV)
+   Works with your HTML:
+   <div class="container footer__grid">
+     <div> ...info + kontakt... </div>
+     <div class="footer__nav"> ...links... </div>
+   </div>
+   ========================= */
 
-.footer__inner{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  align-items:center;
-  font-size:13px;
+.footer{
+  margin-top: 12px;
+  padding: 46px 0 18px;
+  border-top: 1px solid var(--border);
+  background:
+    radial-gradient(900px 320px at 15% 0%, rgba(199,154,18,.08), transparent 55%),
+    rgba(7,10,15,.28);
 }
-.footer__links a{ color: rgba(227,178,27,.95); font-weight:900; }
+
+html[data-theme="light"] .footer{
+  background:
+    radial-gradient(900px 320px at 15% 0%, rgba(199,154,18,.14), transparent 55%),
+    rgba(255,255,255,.70);
+}
+
+.footer__grid{
+  display: grid;
+  grid-template-columns: 1fr auto;  /* left content + right nav */
+  gap: 28px;
+  align-items: start;
+  padding-bottom: 18px;
+}
+
+/* LEFT column typography */
+.footer h3{
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -.2px;
+}
+
+.footer p{
+  margin: 0 0 10px;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 14px;
+  max-width: 62ch;
+}
+
+.footer h4{
+  margin: 16px 0 10px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Kontakt lines (inside left block) */
+.footer__grid > div:first-child p:nth-of-type(n+2){
+  margin-bottom: 8px;
+}
+
+/* RIGHT NAV column */
+.footer__nav{
+  justify-self: end;        /* skroz desno */
+  align-self: start;        /* gore */
+  display: flex;
+  flex-direction: column;  /* odozgo prema dolje */
+  align-items: flex-end;
+  text-align: right;
+  gap: 12px;
+  min-width: 180px;
+}
+
+.footer__nav a{
+  display: block;
+  padding: 6px 0;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;   /* CAPS */
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.72);
+  text-decoration: none;
+  transition: color .18s ease, transform .18s ease;
+}
+
+html[data-theme="light"] .footer__nav a{
+  color: rgba(10,14,20,.72);
+}
+
+.footer__nav a:hover{
+  color: rgba(227,178,27,.95);
+  transform: translateX(-3px); /* jer je right-aligned */
+}
+
+/* Bottom line */
+.footer__bottom{
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.60);
+  font-size: 13px;
+}
+
+html[data-theme="light"] .footer__bottom{
+  border-top: 1px solid var(--border);
+  color: rgba(10,14,20,.60);
+}
+
+/* Responsive: stack */
+@media (max-width: 820px){
+  .footer__grid{
+    grid-template-columns: 1fr;
+  }
+  .footer__nav{
+    justify-self: start;
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 10px;
+  }
+  .footer__nav a:hover{
+    transform: translateX(3px);
+  }
+}
 
 /* ========== LIGHTBOX (stable) ========== */
 .lightbox[hidden]{ display:none !important; }
