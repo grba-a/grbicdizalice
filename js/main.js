@@ -137,40 +137,59 @@
   }
 })();
 
-    // =========================
-  // SOCIAL PROOF COUNT UP
-  // =========================
-  const counters = document.querySelectorAll(".social__number[data-target]");
+// =========================
+// SOCIAL PROOF COUNT UP (robust)
+// =========================
+const counters = document.querySelectorAll(".social__number");
 
-  const animateCounter = (el) => {
-    const target = Number(el.getAttribute("data-target"));
-    if (!Number.isFinite(target) || target <= 0) return;
+const parseTargetAndSuffix = (el) => {
+  // 1) Prefer data-target + data-suffix
+  const dt = el.getAttribute("data-target");
+  const ds = el.getAttribute("data-suffix");
 
-    const suffix = el.getAttribute("data-suffix") || "";
-    let current = 0;
+  if (dt != null && dt !== "") {
+    const target = parseInt(dt, 10);
+    const suffix = ds != null ? ds : "";
+    return { target, suffix };
+  }
 
-    const duration = 3200; // ms
-    const start = performance.now();
+  // 2) Fallback: read from current text e.g. "120+" / "24h"
+  const raw = (el.textContent || "").trim();
+  const target = parseInt(raw.replace(/[^\d]/g, ""), 10);
+  const suffix = raw.replace(/[\d\s]/g, "");
+  return { target, suffix };
+};
 
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / duration);
-      // easeOutCubic
-     const eased = t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      current = Math.round(target * eased);
+const animateCounter = (el) => {
+  if (el.dataset.animated === "true") return;
 
-      el.textContent = `${current}${suffix}`;
+  const { target, suffix } = parseTargetAndSuffix(el);
+  if (!Number.isFinite(target) || target <= 0) return;
 
-      if (t < 1) requestAnimationFrame(tick);
-      else el.textContent = `${target}${suffix}`;
-    };
+  el.dataset.animated = "true";
+  el.textContent = `0${suffix}`;
 
-    requestAnimationFrame(tick);
+  const duration = 2600; // povećaj za sporije (npr. 4000)
+  const start = performance.now();
+
+  const tick = (now) => {
+    const t = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+
+    const current = Math.round(target * eased);
+    el.textContent = `${current}${suffix}`;
+
+    if (t < 1) requestAnimationFrame(tick);
+    else el.textContent = `${target}${suffix}`;
   };
 
-  // trigger when visible (once)
-  if ("IntersectionObserver" in window && counters.length) {
+  requestAnimationFrame(tick);
+};
+
+const startObservers = () => {
+  if (!counters.length) return;
+
+  if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
@@ -179,14 +198,27 @@
           obs.unobserve(entry.target);
         });
       },
-      { threshold: 0.45 }
+      { threshold: 0.2 }
     );
 
     counters.forEach((c) => observer.observe(c));
   } else {
-    // fallback
     counters.forEach(animateCounter);
   }
+
+  // fallback: ako je već u viewportu odmah
+  counters.forEach((c) => {
+    const r = c.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) animateCounter(c);
+  });
+};
+
+// bitno: pokreni nakon što DOM postoji
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startObservers);
+} else {
+  startObservers();
+}
 
   // SCROLL TO TOP
 const scrollBtn = document.getElementById("scrollTop");
