@@ -139,7 +139,13 @@ html[data-theme="light"] .header{
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  padding:10px 0;
+  padding:8px 0;
+}
+
+@media (max-width: 768px){
+  .header__inner{
+    padding: 6px 0;
+  }
 }
 
 /* Brand */
@@ -150,9 +156,15 @@ html[data-theme="light"] .header{
   min-width: 220px;
 }
 .brand__logo{
-  height: 56px;
+  height: 44px;
   width: auto;
   object-fit: contain;
+}
+
+@media (max-width: 768px){
+  .brand__logo{
+    height: 36px;
+  }
 }
 
 /* NAV */
