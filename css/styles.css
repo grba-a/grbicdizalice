@@ -329,7 +329,7 @@ html[data-theme="light"] .hero__overlay{
 }
 .lead{
   margin:0 0 18px;
-  color: rgba(255,255,255,.80);
+  color: rgba(227,178,27,.95);
   font-size:16px;
   line-height:1.65;
   max-width: 62ch;
@@ -815,33 +815,6 @@ html[data-theme="light"] .footer{ color: rgba(10,14,20,.62); }
 }
 .footer__links a{ color: rgba(227,178,27,.95); font-weight:900; }
 
-/* ========== STICKY MOBILE CTA ========== */
-.sticky{
-  position:fixed;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  display:none;
-  gap:10px;
-  z-index: 60;
-}
-.sticky__btn{
-  flex:1;
-  padding: 14px 14px;
-  border-radius: 14px;
-  font-weight:1000;
-  text-align:center;
-  border:1px solid var(--border);
-  background: var(--surface-1);
-}
-.sticky__btn--call{ background: rgba(7,10,15,.82); }
-html[data-theme="light"] .sticky__btn--call{ background: rgba(10,14,20,.92); color: #fff; }
-.sticky__btn--wa{
-  background: linear-gradient(180deg, var(--accent2), var(--accent));
-  color:#111;
-  border-color: rgba(199,154,18,.35);
-}
-
 /* ========== LIGHTBOX (stable) ========== */
 .lightbox[hidden]{ display:none !important; }
 .lightbox{
@@ -917,4 +890,63 @@ html[data-theme="light"] .sticky__btn--call{ background: rgba(10,14,20,.92); col
   .social{
     grid-template-columns: 1fr;
   }
+}
+
+/* FLOATING BUTTONS */
+
+.floating{
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 90;
+}
+
+.floating__btn{
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+  transition: all .25s ease;
+}
+
+.floating__btn svg{
+  width: 22px;
+  height: 22px;
+}
+
+/* WhatsApp */
+.floating__btn--wa{
+  background: linear-gradient(180deg, var(--accent2), var(--accent));
+  color: #111;
+  border-color: rgba(199,154,18,.35);
+}
+
+.floating__btn--wa:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 50px rgba(199,154,18,.25);
+}
+
+/* Scroll top */
+.floating__btn--top{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.floating__btn--top.is-visible{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.floating__btn--top:hover{
+  border-color: rgba(199,154,18,.35);
+  transform: translateY(-2px);
 }

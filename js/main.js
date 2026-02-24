@@ -187,3 +187,23 @@
     // fallback
     counters.forEach(animateCounter);
   }
+
+  // SCROLL TO TOP
+const scrollBtn = document.getElementById("scrollTop");
+
+window.addEventListener("scroll", () => {
+  if (!scrollBtn) return;
+
+  if (window.scrollY > 600) {
+    scrollBtn.classList.add("is-visible");
+  } else {
+    scrollBtn.classList.remove("is-visible");
+  }
+});
+
+if (scrollBtn) {
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
