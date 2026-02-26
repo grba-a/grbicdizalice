@@ -1198,3 +1198,12 @@ html[data-theme="light"] .section--soft::after{
   backdrop-filter: blur(1px);
   opacity:.5;
 }
+
+/* default (dark) */
+.brand__logo--light { display: none; }
+.brand__logo--dark  { display: block; }
+
+/* light theme */
+html[data-theme="light"] .brand__logo--dark  { display: none; }
+html[data-theme="light"] .brand__logo--light { display: block; }
+
