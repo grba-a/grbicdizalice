@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Projekti | GRBIĆ d.o.o.</title>
+  <meta name="description" content="Blog priče i projekti – GRBIĆ d.o.o." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Fonts: Inter (body) + Manrope (headings) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Existing global styles -->
+  <link rel="stylesheet" href="../css/styles.css" />
+  <!-- Blog-only styles -->
+  <link rel="stylesheet" href="../css/projekti.css" />
+</head>
+
+<body>
+
+  <!-- HEADER (reuse existing) -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="brand" href="../index.html#top" aria-label="Početna">
+        <img class="brand__logo" src="../img/logo.png" alt="logo" />
+      </a>
+
+      <nav class="nav" aria-label="Glavna navigacija">
+        <a class="nav__link" href="../index.html#usluge">Usluge</a>
+        <a class="nav__link" href="../index.html#oprema">Oprema</a>
+        <a class="nav__link is-active" href="blog.html">Projekti</a>
+        <a class="nav__link" href="../index.html#faq">FAQ</a>
+        <a class="nav__link" href="#kontakt">Kontakt</a>
+      </nav>
+
+      <div class="header__cta">
+        <a class="btn btn--ghost" href="tel:+385989530050">Poziv</a>
+        <a class="btn btn--primary" href="https://wa.me/385989530050" target="_blank" rel="noopener">WhatsApp</a>
+
+        <button class="burger" id="burger" aria-label="Otvori izbornik" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <!-- THEME TOGGLE (transparent, as you prefer) -->
+        <button class="theme-fab" id="themeToggle" type="button" aria-label="Promijeni temu">
+          <span class="theme-fab__icon">🌙</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile" id="mobile" hidden>
+      <div class="container mobile__inner">
+        <a class="mobile__link" href="../index.html#usluge" data-close>Usluge</a>
+        <a class="mobile__link" href="../index.html#oprema" data-close>Oprema</a>
+        <a class="mobile__link" href="blog.html" data-close>Projekti</a>
+        <a class="mobile__link" href="../index.html#faq" data-close>FAQ</a>
+        <a class="mobile__link" href="#kontakt" data-close data-scroll>Kontakt</a>
+
+        <div class="mobile__actions">
+          <a class="btn btn--ghost" href="tel:+385989530050">Poziv</a>
+          <a class="btn btn--primary" href="https://wa.me/385989530050" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- BLOG LIST -->
+    <section class="blog-list section section--soft">
+      <div class="container">
+
+        <div class="blog-grid">
+
+          <!-- BLOG CARD 1 -->
+          <article class="blog-card">
+            <a class="blog-card__media" href="#kontakt" aria-label="Otvorite upit">
+              <img src="../img/projekt1.jpg" alt="Projekt 1" loading="lazy">
+            </a>
+            <div class="blog-card__body">
+              <h3 class="blog-card__title">Projekt 1</h3>
+              <p class="blog-card__text">
+                Kratki opis: lokacija, tip tereta, ograničenja pristupa i kako je izvedeno dizanje bez kašnjenja.
+              </p>
+              <ul class="blog-card__bullets">
+                <li>Pristup: uski prilaz / ograničen manevar</li>
+                <li>Fokus: sigurnost i precizno pozicioniranje</li>
+                <li>Rezultat: izvedeno u dogovorenom terminu</li>
+              </ul>
+              <div class="blog-card__actions">
+                <a class="btn btn--ghost" href="tel:+385989530050">Poziv</a>
+                <a class="btn btn--primary" href="https://wa.me/385989530050" target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- BLOG CARD 2 -->
+          <article class="blog-card">
+            <a class="blog-card__media" href="#kontakt" aria-label="Otvorite upit">
+              <img src="../img/projekt2.jpg" alt="Projekt 2" loading="lazy">
+            </a>
+            <div class="blog-card__body">
+              <h3 class="blog-card__title">Projekt 2</h3>
+              <p class="blog-card__text">
+                Kratki opis: što se montiralo, koliko je trajalo, logistika i koordinacija na gradilištu.
+              </p>
+              <ul class="blog-card__bullets">
+                <li>Koordinacija: dogovor termina i priprema</li>
+                <li>Operater: precizno vođenje tereta</li>
+                <li>Kontrola: stabilizacija i sigurnosne provjere</li>
+              </ul>
+              <div class="blog-card__actions">
+                <a class="btn btn--ghost" href="tel:+385989530050">Poziv</a>
+                <a class="btn btn--primary" href="https://wa.me/385989530050" target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- BLOG CARD 3 -->
+          <article class="blog-card">
+            <a class="blog-card__media" href="#kontakt" aria-label="Otvorite upit">
+              <img src="../img/projekt3.jpg" alt="Projekt 3" loading="lazy">
+            </a>
+            <div class="blog-card__body">
+              <h3 class="blog-card__title">Projekt 3</h3>
+              <p class="blog-card__text">
+                Kratki opis: težina, radna visina, doseg i način pozicioniranja.
+              </p>
+              <ul class="blog-card__bullets">
+                <li>Teret: stroj / oprema / veliki element</li>
+                <li>Okruženje: ograničen prostor</li>
+                <li>Izvedba: bez oštećenja i zastoja</li>
+              </ul>
+              <div class="blog-card__actions">
+                <a class="btn btn--ghost" href="tel:+385989530050">Poziv</a>
+                <a class="btn btn--primary" href="https://wa.me/385989530050" target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- BLOG CARD 4 -->
+          <article class="blog-card">
+            <a class="blog-card__media" href="#kontakt" aria-label="Otvorite upit">
+              <img src="../img/projekt4.jpg" alt="Projekt 4" loading="lazy">
+            </a>
+            <div class="blog-card__body">
+              <h3 class="blog-card__title">Projekt 4</h3>
+              <p class="blog-card__text">
+                Kratki opis: primjer privatnog objekta, dolazak, zaštita površina i rad bez buke/gužve.
+              </p>
+              <ul class="blog-card__bullets">
+                <li>Priprema: fotke pristupa + plan dizanja</li>
+                <li>Ritam: brzo postavljanje i rad</li>
+                <li>Čistoća: minimalno ometanje okoline</li>
+              </ul>
+              <div class="blog-card__actions">
+                <a class="btn btn--ghost" href="tel:+385989530050">Poziv</a>
+                <a class="btn btn--primary" href="https://wa.me/385989530050" target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- BLOG CARD 5 -->
+          <article class="blog-card">
+            <a class="blog-card__media" href="#kontakt" aria-label="Otvorite upit">
+              <img src="../img/projekt5.jpg" alt="Projekt 5" loading="lazy">
+            </a>
+            <div class="blog-card__body">
+              <h3 class="blog-card__title">Projekt 5</h3>
+              <p class="blog-card__text">
+                Kratki opis: situacija “hitno”, kako je dogovoren termin, priprema terena i izvedba.
+              </p>
+              <ul class="blog-card__bullets">
+                <li>Brzina: dogovor i dolazak</li>
+                <li>Sigurnost: kontrola okoline</li>
+                <li>Rezultat: bez zastoja na gradilištu</li>
+              </ul>
+              <div class="blog-card__actions">
+                <a class="btn btn--ghost" href="tel:+385989530050">Poziv</a>
+                <a class="btn btn--primary" href="https://wa.me/385989530050" target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- BLOG CARD 6 -->
+          <article class="blog-card">
+            <a class="blog-card__media" href="#kontakt" aria-label="Otvorite upit">
+              <img src="../img/projekt6.jpg" alt="Projekt 6" loading="lazy">
+            </a>
+            <div class="blog-card__body">
+              <h3 class="blog-card__title">Projekt 6</h3>
+              <p class="blog-card__text">
+                Kratki opis: koordinacija s ekipom, vremenski prozor, pristup i “točno na mjesto”.
+              </p>
+              <ul class="blog-card__bullets">
+                <li>Koordinacija: više izvođača</li>
+                <li>Prozor: ograničeno vrijeme rada</li>
+                <li>Preciznost: pozicioniranje u cm</li>
+              </ul>
+              <div class="blog-card__actions">
+                <a class="btn btn--ghost" href="tel:+385989530050">Poziv</a>
+                <a class="btn btn--primary" href="https://wa.me/385989530050" target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT (same as index style) -->
+    <section class="section" id="kontakt">
+      <div class="container">
+        <div class="contact">
+          <!-- LEFT -->
+          <div class="contact__copy">
+            <h2>Kontakt</h2>
+
+            <div class="contact__cards contact__cards--stack">
+              <a class="mini mini--phone" href="tel:+385989530050" aria-label="Nazovi +385 98 953 0050">
+                <div class="mini__label">Telefon</div>
+                <div class="mini__value">+385 98 953 0050</div>
+              </a>
+
+              <a class="mini mini--wa" href="https://wa.me/385989530050" target="_blank" rel="noopener" aria-label="WhatsApp poruka">
+                <div class="mini__label">WhatsApp</div>
+                <div class="mini__value">Pošalji poruku</div>
+              </a>
+
+              <a class="mini mini--mail" href="mailto:grbicdizalica@gmail.com" aria-label="Pošalji email">
+                <div class="mini__label">Mail</div>
+                <div class="mini__value">grbicdizalica@gmail.com</div>
+              </a>
+            </div>
+
+            <div class="actions">
+              <a class="btn btn--primary" href="https://wa.me/385989530050" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn--ghost" href="tel:+385989530050">Poziv</a>
+            </div>
+
+            <p class="contact__note">Odgovaramo u najkraćem mogućem roku.</p>
+          </div>
+
+          <!-- RIGHT -->
+          <form class="form" id="leadForm" novalidate>
+            <div class="form__row">
+              <label>Ime i prezime</label>
+              <input type="text" name="name" autocomplete="name" placeholder="Npr. Ivan Horvat" required>
+            </div>
+
+            <div class="form__row">
+              <label>Telefon</label>
+              <input type="tel" name="phone" autocomplete="tel" placeholder="+385 ..." required>
+            </div>
+
+            <div class="form__row">
+              <label>Lokacija / adresa</label>
+              <input type="text" name="location" placeholder="Npr. Lapad, Dubrovnik" required>
+            </div>
+
+            <div class="form__row">
+              <label>Opis posla</label>
+              <textarea name="message" rows="5" placeholder="Što se podiže, okvirna težina, pristup, termin..." required></textarea>
+            </div>
+
+            <button class="btn btn--primary btn--block" type="submit">Pošalji upit (email)</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (reuse your existing style) -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <h3>GRBIĆ d.o.o.</h3>
+        <h4>Kontakt</h4>
+        <p>Broj mobitela: +385 98 953 0050</p>
+        <p>Mail: grbicdizalica@gmail.com</p>
+        <p>Dubrovnik</p>
+      </div>
+
+      <div class="footer__nav">
+        <a href="../index.html#usluge">Usluge</a>
+        <a href="../index.html#oprema">Oprema</a>
+        <a href="blog.html">Blog</a>
+        <a href="../index.html#faq">FAQ</a>
+        <a href="#kontakt" data-scroll>Kontakt</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      © 2026 Dubrovnik Dizalica. Sva prava pridržana.
+    </div>
+  </footer>
+
+  <!-- FLOATING ACTIONS (optional; if you want the same buttons) -->
+  <div class="floating">
+    <button class="floating__btn floating__btn--top" id="scrollTop" aria-label="Na vrh">↑</button>
+
+    <a href="https://wa.me/385989530050" target="_blank" class="floating__btn floating__btn--wa" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.52 3.48A11.8 11.8 0 0 0 12.01 0C5.39 0 .02 5.37.02 12c0 2.11.55 4.17 1.6 6L0 24l6.2-1.62A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52ZM12 21.8c-1.87 0-3.7-.5-5.3-1.45l-.38-.22-3.67.96.98-3.58-.24-.37A9.7 9.7 0 0 1 2.3 12c0-5.36 4.35-9.7 9.7-9.7 2.59 0 5.02 1.01 6.86 2.84A9.65 9.65 0 0 1 21.7 12c0 5.35-4.35 9.8-9.7 9.8Zm5.35-7.25c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.88-.78-1.47-1.74-1.65-2.04-.17-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.8.37c-.27.3-1.05 1.02-1.05 2.48 0 1.47 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.1 4.48.71.3 1.27.48 1.7.61.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.42-.08-.12-.27-.2-.57-.35Z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Use same JS (theme toggle + form mailto + scroll top etc.) -->
+  <script src="../js/main.js" defer></script>
+
+</body>
+</html>
