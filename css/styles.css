@@ -1042,7 +1042,7 @@ textarea{ resize: vertical; min-height: 130px; }
    Aktivira se kad: <html data-theme="light">
    ========================================================= */
 html[data-theme="light"]{
-  --bg: #ffffff;
+  --bg: #fcf6f6;
 
   --text: rgba(10,14,20,.92);
   --muted: rgba(10,14,20,.68);
@@ -1111,7 +1111,7 @@ html[data-theme="light"] .burger span{
 
 /* Mobile menu in light */
 html[data-theme="light"] .mobile{
-  background: #ffffff;
+  background: #fcf6f6;
   backdrop-filter: none;
   border-top: 1px solid rgba(10,14,20,.12);
 }
@@ -1155,8 +1155,9 @@ html[data-theme="light"] .mini:hover{
 
 /* Footer light */
 html[data-theme="light"] .footer{
-  background: rgba(255,255,255,.95);
+  background: #fcf6f6;
 }
+
 html[data-theme="light"] .footer__bottom{
   border-top: 1px solid rgba(10,14,20,.10);
   color: rgba(10,14,20,.60);
@@ -1171,7 +1172,7 @@ html[data-theme="light"] .footer__nav a:hover{
 
 /* Floating buttons in light */
 html[data-theme="light"] .floating__btn{
-  background: rgba(255,255,255,.92);
+  background: #fcf6f6;
   color: rgba(10,14,20,.92);
 }
 
