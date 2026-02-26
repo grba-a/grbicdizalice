@@ -239,3 +239,36 @@ if (scrollBtn) {
   });
 }
 
+// =========================
+// THEME TOGGLE (dark/light only) - simple
+// =========================
+(() => {
+  const KEY = "theme"; // "dark" | "light"
+  const btn = document.getElementById("themeToggle");
+  if (!btn) return;
+
+  const icon = btn.querySelector(".theme-fab__icon");
+
+  const getTheme = () => (localStorage.getItem(KEY) === "light" ? "light" : "dark");
+
+  const applyTheme = (mode) => {
+    if (mode === "light") document.documentElement.setAttribute("data-theme", "light");
+    else document.documentElement.removeAttribute("data-theme");
+
+    // icon
+    if (icon) icon.textContent = mode === "light" ? "☀️" : "🌙";
+    btn.setAttribute("aria-pressed", String(mode === "light"));
+  };
+
+  const toggle = () => {
+    const next = getTheme() === "light" ? "dark" : "light";
+    localStorage.setItem(KEY, next);
+    applyTheme(next);
+  };
+
+  // init
+  applyTheme(getTheme());
+
+  // click
+  btn.addEventListener("click", toggle);
+})();
